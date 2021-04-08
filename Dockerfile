@@ -1,5 +1,5 @@
-FROM openjdk:7
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
-RUN javac HelloWorld.java
-CMD ["java", "HelloWorld"]
+FROM tomcat:latest
+RUN mvn -f pom.xml clean package
+COPY ./target/hello-1.0.war /usr/local/tomcat/conf/
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
