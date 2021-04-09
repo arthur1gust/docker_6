@@ -9,6 +9,6 @@ RUN apt-get -y install git
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git /tmp/app/
 WORKDIR /tmp/app/
 RUN mvn package
-RUN cd /tmp/app/target/*.war /usr/local/tomcat/conf/
+RUN cp /tmp/app/target/*.war /usr/local/tomcat/conf/
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
